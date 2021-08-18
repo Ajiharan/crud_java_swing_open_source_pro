@@ -5,17 +5,23 @@
  */
 package ui;
 
+import java.util.*;
+import model.Book;
+import model.BookList;
+import static java.util.Comparator.comparing;
 /**
  *
  * @author Haran
  */
 public class sortDetails extends javax.swing.JFrame {
-
+    private List<Book> list;
+    
     /**
      * Creates new form sortDetails
      */
     public sortDetails() {
         initComponents();
+        list=BookList.booklist;
     }
 
     /**
@@ -35,7 +41,7 @@ public class sortDetails extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txt_results = new javax.swing.JTextArea();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
@@ -108,13 +114,23 @@ public class sortDetails extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txt_results.setColumns(20);
+        txt_results.setRows(5);
+        jScrollPane1.setViewportView(txt_results);
 
         jButton6.setText("by price");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("by quantity");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -194,6 +210,37 @@ public class sortDetails extends javax.swing.JFrame {
         st.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+         
+         try{
+            
+              list.sort(Comparator.comparing(Book::getPrice));
+              String res="";
+
+              res = list.stream().map(book -> book.toString()+"\n").reduce(res, String::concat);
+              txt_results.setText(res);
+
+         }catch(Exception e){
+             e.printStackTrace();
+         }
+       
+               
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+       try{
+            
+              list.sort(Comparator.comparing(Book::getQuantity));
+              String res="";
+
+              res = list.stream().map(book -> book.toString()+"\n").reduce(res, String::concat);
+              txt_results.setText(res);
+
+         }catch(Exception e){
+             e.printStackTrace();
+         }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -240,6 +287,6 @@ public class sortDetails extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea txt_results;
     // End of variables declaration//GEN-END:variables
 }

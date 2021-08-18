@@ -246,8 +246,7 @@ public class updateDetails extends javax.swing.JFrame {
                       book.setBookName(txt_bookName1.getText());
                       book.setCategory(txt_category1.getText());
                       book.setPrice(Float.parseFloat(txt_price1.getText()));
-                      book.setQuantity(Integer.parseInt(txt_quantity1.getText()));
-                     
+                      book.setQuantity(Integer.parseInt(txt_quantity1.getText()));          
                       break;
                   }
                }
