@@ -172,14 +172,14 @@ public class WelcomePanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.setVisible(false);
-        UpdatePanel st=new UpdatePanel();
+         this.setVisible(false);
+        updateDetails st=new updateDetails();
         st.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.setVisible(false);
-        SortPanel st=new SortPanel();
+         this.setVisible(false);
+        sortDetails st=new sortDetails();
         st.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
